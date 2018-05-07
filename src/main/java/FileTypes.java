@@ -1,4 +1,4 @@
-public enum FileTypes {
+enum FileTypes {
 
     CSV,
     JSON,

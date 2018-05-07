@@ -1,4 +1,4 @@
-public enum TransmissionTypes {
+enum TransmissionTypes {
 
     FTP,
     MAIL,

@@ -4,16 +4,16 @@ import org.slf4j.LoggerFactory;
 
 import java.io.*;
 
-class loadConfig {
+class LoadConfig {
 
     private String serverAddress;
     private String userName;
     private String userPassword;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(loadConfig.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoadConfig.class);
 
 
-    public loadConfig(String fileName) {
+    public LoadConfig(String fileName) {
 
         try {
             FileReader fr = new FileReader(new File(fileName));
