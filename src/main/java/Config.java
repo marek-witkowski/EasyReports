@@ -17,21 +17,7 @@ class Config {
     private String remoteServer;
     private String remoteUser;
     private String remotePassword;
-
-    public Config(String connectionName, String dbServer, String dbUser, String dbPassword, String dbView, TransmissionTypes transmissionType, FileTypes fileType, String fileName, String fileHeadName, String remoteServer, String remoteUser, String remotePassword) {
-        this.connectionName = connectionName;
-        this.dbServer = dbServer;
-        this.dbUser = dbUser;
-        this.dbPassword = dbPassword;
-        this.dbView = dbView;
-        this.transmissionType = transmissionType;
-        this.fileType = fileType;
-        this.fileName = fileName;
-        this.fileHeadName = fileHeadName;
-        this.remoteServer = remoteServer;
-        this.remoteUser = remoteUser;
-        this.remotePassword = remotePassword;
-    }
+    private String remoteAddress;
 
     public String getConnectionName() {
         return connectionName;
@@ -127,6 +113,14 @@ class Config {
 
     public void setRemotePassword(String remotePassword) {
         this.remotePassword = remotePassword;
+    }
+
+    public String getRemoteAddress() {
+        return remoteAddress;
+    }
+
+    public void setRemoteAddress(String remoteAddress) {
+        this.remoteAddress = remoteAddress;
     }
 }
 

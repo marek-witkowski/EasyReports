@@ -18,13 +18,13 @@ class ConfigFromFile {
         try {
             String lines = FileUtils.readFileToString(file, "UTF-8");
 
-            LOGGER.debug("Plik z danymi wczytano.");
+            LOGGER.debug("Plik z danymi wczytano: " + fileName);
 
             return lines;
 
         } catch (IOException e) {
 
-            LOGGER.error("Błąd odczytu danych.", e);
+            LOGGER.error("Błąd odczytu danych: " + fileName, e);
 
             return "";
 
