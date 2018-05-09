@@ -1,9 +1,15 @@
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ReportsTable {
 
-public static ConfigTable init(String fileName){
+    private static final Logger LOGGER = LoggerFactory.getLogger(ReportsTable.class);
+
+
+
+static ConfigTable init(String fileName){
 
     ConfigFromFile cff = new ConfigFromFile();
     ConfigTable configTable = new ConfigTable();
@@ -11,9 +17,14 @@ public static ConfigTable init(String fileName){
     JSONObject jObject = new JSONObject(cff.getConfig("ConfigReports.json"));
     JSONArray jArray = jObject.getJSONArray("Reports");
 
+    LOGGER.info("Wczytuję konfigurację " + jArray.length() + " raportów.");
+
     for (int i = 0; i < jArray.length(); i++) {
 
+        LOGGER.debug("Wczytuję konfigurację " + (i+1) + " raportu.");
+
         Config temp = new Config();
+
 
         temp.setConnectionName(jArray.getJSONObject(i).getString("connectionName"));
         temp.setDbServer(jArray.getJSONObject(i).getString("dbServer"));
@@ -21,7 +32,8 @@ public static ConfigTable init(String fileName){
         temp.setDbPassword(jArray.getJSONObject(i).getString("dbPassword"));
         temp.setDbView(jArray.getJSONObject(i).getString("dbView"));
 
-//       temp.setTransmissionType(jArray.getJSONObject(i).getEnum(TransmissionTypes,"TransmissionType"));
+       temp.setTransmissionType(jArray.getJSONObject(i).getString("transmissionType"));
+       temp.setFileType(jArray.getJSONObject(i).getString("fileType"));
 
         temp.setFileName(jArray.getJSONObject(i).getString("fileName"));
         temp.setFileHeadName(jArray.getJSONObject(i).getString("fileHeadName"));

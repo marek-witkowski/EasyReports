@@ -1,3 +1,5 @@
+import java.util.SplittableRandom;
+
 class Config {
 
     private String connectionName;
@@ -8,8 +10,8 @@ class Config {
 
     private String dbView;
 
-    private TransmissionTypes transmissionType;
-    private FileTypes fileType;
+    private String transmissionType;
+    private String fileType;
 
     private String fileName;
     private String fileHeadName;
@@ -19,107 +21,107 @@ class Config {
     private String remotePassword;
     private String remoteAddress;
 
-    public String getConnectionName() {
+    String getConnectionName() {
         return connectionName;
     }
 
-    public void setConnectionName(String connectionName) {
+    void setConnectionName(String connectionName) {
         this.connectionName = connectionName;
     }
 
-    public String getDbServer() {
+     String getDbServer() {
         return dbServer;
     }
 
-    public void setDbServer(String dbServer) {
+     void setDbServer(String dbServer) {
         this.dbServer = dbServer;
     }
 
-    public String getDbUser() {
+     String getDbUser() {
         return dbUser;
     }
 
-    public void setDbUser(String dbUser) {
+     void setDbUser(String dbUser) {
         this.dbUser = dbUser;
     }
 
-    public String getDbPassword() {
+     String getDbPassword() {
         return dbPassword;
     }
 
-    public void setDbPassword(String dbPassword) {
+     void setDbPassword(String dbPassword) {
         this.dbPassword = dbPassword;
     }
 
-    public String getDbView() {
+     String getDbView() {
         return dbView;
     }
 
-    public void setDbView(String dbView) {
+     void setDbView(String dbView) {
         this.dbView = dbView;
     }
 
-    public TransmissionTypes getTransmissionType() {
+     String getTransmissionType() {
         return transmissionType;
     }
 
-    public void setTransmissionType(TransmissionTypes transmissionType) {
+     void setTransmissionType(String transmissionType) {
         this.transmissionType = transmissionType;
     }
 
-    public FileTypes getFileType() {
+     String getFileType() {
         return fileType;
     }
 
-    public void setFileType(FileTypes fileType) {
+     void setFileType(String fileType) {
         this.fileType = fileType;
     }
 
-    public String getFileName() {
+     String getFileName() {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
+     void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
-    public String getFileHeadName() {
+     String getFileHeadName() {
         return fileHeadName;
     }
 
-    public void setFileHeadName(String fileHeadName) {
+     void setFileHeadName(String fileHeadName) {
         this.fileHeadName = fileHeadName;
     }
 
-    public String getRemoteServer() {
+     String getRemoteServer() {
         return remoteServer;
     }
 
-    public void setRemoteServer(String remoteServer) {
+     void setRemoteServer(String remoteServer) {
         this.remoteServer = remoteServer;
     }
 
-    public String getRemoteUser() {
+     String getRemoteUser() {
         return remoteUser;
     }
 
-    public void setRemoteUser(String remoteUser) {
+     void setRemoteUser(String remoteUser) {
         this.remoteUser = remoteUser;
     }
 
-    public String getRemotePassword() {
+     String getRemotePassword() {
         return remotePassword;
     }
 
-    public void setRemotePassword(String remotePassword) {
+     void setRemotePassword(String remotePassword) {
         this.remotePassword = remotePassword;
     }
 
-    public String getRemoteAddress() {
+     String getRemoteAddress() {
         return remoteAddress;
     }
 
-    public void setRemoteAddress(String remoteAddress) {
+     void setRemoteAddress(String remoteAddress) {
         this.remoteAddress = remoteAddress;
     }
 }

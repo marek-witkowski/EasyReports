@@ -18,7 +18,7 @@ class ConfigFromFile {
         try {
             String lines = FileUtils.readFileToString(file, "UTF-8");
 
-            LOGGER.debug("Plik z danymi wczytano: " + fileName);
+            LOGGER.info("Plik z danymi wczytano: " + fileName);
 
             return lines;
 
