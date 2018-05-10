@@ -10,8 +10,10 @@ public class Main {
         LOGGER.info("--== Start aplikacji ==--");
 
         ConfigTable configTable;
+        String[][] temporaryDataTable;
+        String fileName;
 
-       configTable = ReportsTable.init("ConfigReports.json");
+        configTable = ReportsTable.init("ConfigReports.json");
 
         for (int i = 0; i < configTable.configList.size(); i++) {
 
@@ -22,21 +24,28 @@ public class Main {
                     configTable.configList.get(i).getDbUser(),
                     configTable.configList.get(i).getDbPassword(),
                     configTable.configList.get(i).getDbView()
-                    );
+            );
 
-            dbViewToArray.getTableView();
+            temporaryDataTable = dbViewToArray.getTableView();
 
+            DataSaver ds = new DataSaver();
 
+            fileName = ds.asFile(temporaryDataTable, configTable.configList.get(i).getFileType(), configTable.configList.get(i).getFileName());
 
+            if (!fileName.equals("")) {
 
+                LOGGER.debug("Nazwa pliku: " + fileName + " Przekazano plik do wysyłki.");
 
+                DataSender dataSender = new DataSender();
 
-
-
+                dataSender.save(configTable.configList.get(i).getRemoteServer(),
+                        configTable.configList.get(i).getRemoteUser(),
+                        configTable.configList.get(i).getRemotePassword(),
+                        configTable.configList.get(i).getRemoteAddress(),
+                        fileName,
+                        configTable.configList.get(i).getTransmissionType());
+            }
         }
-
-
-
 
         LOGGER.info("--== Koniec pracy ==--");
 
