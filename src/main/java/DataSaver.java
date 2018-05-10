@@ -1,12 +1,10 @@
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
-
 import org.apache.commons.csv.QuoteMode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,9 +13,7 @@ import java.time.format.DateTimeFormatter;
 
 public class DataSaver {
 
-    String[][] temporaryDataTable;
-    String fileType;
-    String fileName;
+
 
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DataSaver.class);
@@ -25,7 +21,6 @@ public class DataSaver {
         String  asFile(String[][] temporaryDataTable, String fileType, String fileName){
         DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
         fileName = fileName + dtf.format(LocalDate.now()) + "." + fileType.toLowerCase();
-        File temporaryFile = new File(fileName);
 
         LOGGER.debug("Utworzono nazwę pliku:" + fileName);
 

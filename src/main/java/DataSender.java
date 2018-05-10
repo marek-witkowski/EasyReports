@@ -10,14 +10,6 @@ import java.nio.file.Path;
 
 public class DataSender {
 
-    String remoteServer;
-    String remoteUser;
-    String remotePassword;
-    String remoteAddress;
-    String fileName;
-    String transmissionType;
-
-
     private static final Logger LOGGER = LoggerFactory.getLogger(DataSender.class);
 
     void save(String remoteServer, String remoteUser, String remotePassword, String remoteAddress, String fileName, String transmissionType) {
@@ -78,8 +70,6 @@ public class DataSender {
             LOGGER.info("Lączenie z serwerem FTP: " + remoteServer);
             client.connect(remoteServer);
             client.login(remoteUser, remotePassword);
-
-
             client.storeFile(fileName, is);
             client.logout();
 
@@ -97,7 +87,7 @@ public class DataSender {
 
     }
 
-   private void sendFileViaMail(String fileName, String remoteServer, String remoteUser, String remotePassword, String remoteAddress) {
+    private void sendFileViaMail(String fileName, String remoteServer, String remoteUser, String remotePassword, String remoteAddress) {
     }
 
 }
