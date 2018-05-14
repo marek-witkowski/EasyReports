@@ -1,10 +1,9 @@
-
 import org.apache.commons.io.FileUtils;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 
 class ConfigFromFile {
 
@@ -18,19 +17,19 @@ class ConfigFromFile {
         try {
             String lines = FileUtils.readFileToString(file, "UTF-8");
 
-            LOGGER.info("Plik z danymi wczytano: " + fileName);
+            LOGGER.info("Plik z raportami wczytano: " + fileName);
 
             return lines;
 
         } catch (IOException e) {
 
-            LOGGER.error("Błąd odczytu danych: " + fileName, e);
+            LOGGER.error("Błąd odczytu danych z raportami: " + fileName, e);
 
-            return "";
+            System.exit(1);
 
         }
 
-
+        return null;
     }
 
 
