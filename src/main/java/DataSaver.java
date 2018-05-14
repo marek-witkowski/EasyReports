@@ -14,13 +14,30 @@ import java.time.format.DateTimeFormatter;
 public class DataSaver {
 
 
-
-
     private static final Logger LOGGER = LoggerFactory.getLogger(DataSaver.class);
 
-        String  asFile(String[][] temporaryDataTable, String fileType, String fileName){
+    String asFile(String[][] temporaryDataTable, String fileType, String fileName, String period) {
         DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
-        fileName = fileName + dtf.format(LocalDate.now()) + "." + fileType.toLowerCase();
+
+        String fileDate = dtf.format(LocalDate.now());
+
+        switch (period) {
+
+            case "MONTHLY":
+                fileDate = fileDate.substring(0, 6);
+                break;
+
+            case "ANNUAL":
+                fileDate = fileDate.substring(0, 4);
+                break;
+
+            default:
+                break;
+
+        }
+
+
+        fileName = fileName + fileDate + "." + fileType.toLowerCase();
 
         LOGGER.debug("Utworzono nazwę pliku:" + fileName);
 
@@ -47,10 +64,12 @@ public class DataSaver {
 
             case "JSON":
 
+
                 break;
 
 
             case "XML":
+
 
                 break;
 

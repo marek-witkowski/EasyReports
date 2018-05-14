@@ -1,5 +1,3 @@
-import java.util.SplittableRandom;
-
 class Config {
 
     private String connectionName;
@@ -21,6 +19,11 @@ class Config {
     private String remotePassword;
     private String remoteAddress;
 
+    private String period;
+
+
+
+
     String getConnectionName() {
         return connectionName;
     }
@@ -29,100 +32,108 @@ class Config {
         this.connectionName = connectionName;
     }
 
-     String getDbServer() {
+    String getDbServer() {
         return dbServer;
     }
 
-     void setDbServer(String dbServer) {
+    void setDbServer(String dbServer) {
         this.dbServer = dbServer;
     }
 
-     String getDbUser() {
+    String getDbUser() {
         return dbUser;
     }
 
-     void setDbUser(String dbUser) {
+    void setDbUser(String dbUser) {
         this.dbUser = dbUser;
     }
 
-     String getDbPassword() {
+    String getDbPassword() {
         return dbPassword;
     }
 
-     void setDbPassword(String dbPassword) {
+    void setDbPassword(String dbPassword) {
         this.dbPassword = dbPassword;
     }
 
-     String getDbView() {
+    String getDbView() {
         return dbView;
     }
 
-     void setDbView(String dbView) {
+    void setDbView(String dbView) {
         this.dbView = dbView;
     }
 
-     String getTransmissionType() {
+    String getTransmissionType() {
         return transmissionType;
     }
 
-     void setTransmissionType(String transmissionType) {
+    void setTransmissionType(String transmissionType) {
         this.transmissionType = transmissionType;
     }
 
-     String getFileType() {
+    String getFileType() {
         return fileType;
     }
 
-     void setFileType(String fileType) {
+    void setFileType(String fileType) {
         this.fileType = fileType;
     }
 
-     String getFileName() {
+    String getFileName() {
         return fileName;
     }
 
-     void setFileName(String fileName) {
+    void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
-     String getFileHeadName() {
+    String getFileHeadName() {
         return fileHeadName;
     }
 
-     void setFileHeadName(String fileHeadName) {
+    void setFileHeadName(String fileHeadName) {
         this.fileHeadName = fileHeadName;
     }
 
-     String getRemoteServer() {
+    String getRemoteServer() {
         return remoteServer;
     }
 
-     void setRemoteServer(String remoteServer) {
+    void setRemoteServer(String remoteServer) {
         this.remoteServer = remoteServer;
     }
 
-     String getRemoteUser() {
+    String getRemoteUser() {
         return remoteUser;
     }
 
-     void setRemoteUser(String remoteUser) {
+    void setRemoteUser(String remoteUser) {
         this.remoteUser = remoteUser;
     }
 
-     String getRemotePassword() {
+    String getRemotePassword() {
         return remotePassword;
     }
 
-     void setRemotePassword(String remotePassword) {
+    void setRemotePassword(String remotePassword) {
         this.remotePassword = remotePassword;
     }
 
-     String getRemoteAddress() {
+    String getRemoteAddress() {
         return remoteAddress;
     }
 
-     void setRemoteAddress(String remoteAddress) {
+    void setRemoteAddress(String remoteAddress) {
         this.remoteAddress = remoteAddress;
+    }
+
+    String getPeriod() {
+        return period;
+    }
+
+    void setPeriod(String period) {
+        this.period = period;
     }
 }
 

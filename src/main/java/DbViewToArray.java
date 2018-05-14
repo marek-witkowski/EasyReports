@@ -66,7 +66,7 @@ public class DbViewToArray {
 
         } catch (ClassNotFoundException | SQLException e) {
 
-            LOGGER.error("Błąd: ", e);
+            LOGGER.error("Error: ", e);
 
 
         }

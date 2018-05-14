@@ -12,8 +12,9 @@ public class Main {
         ConfigTable configTable;
         String[][] temporaryDataTable;
         String fileName;
+        String configFile = "ConfigReports.json";
 
-        configTable = ReportsTable.init("ConfigReports.json");
+        configTable = ReportsTable.init(configFile);
 
         for (int i = 0; i < configTable.configList.size(); i++) {
 
@@ -30,7 +31,11 @@ public class Main {
 
             DataSaver ds = new DataSaver();
 
-            fileName = ds.asFile(temporaryDataTable, configTable.configList.get(i).getFileType(), configTable.configList.get(i).getFileName());
+            fileName = ds.asFile(temporaryDataTable,
+                    configTable.configList.get(i).getFileType(),
+                    configTable.configList.get(i).getFileName(),
+                    configTable.configList.get(i).getPeriod()
+            );
 
             if (!fileName.equals("")) {
 
@@ -43,7 +48,8 @@ public class Main {
                         configTable.configList.get(i).getRemotePassword(),
                         configTable.configList.get(i).getRemoteAddress(),
                         fileName,
-                        configTable.configList.get(i).getTransmissionType());
+                        configTable.configList.get(i).getTransmissionType(),
+                        configTable.configList.get(i).getConnectionName());
             }
         }
 

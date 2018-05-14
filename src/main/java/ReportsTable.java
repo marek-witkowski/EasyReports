@@ -14,7 +14,7 @@ static ConfigTable init(String fileName){
     ConfigFromFile cff = new ConfigFromFile();
     ConfigTable configTable = new ConfigTable();
 
-    JSONObject jObject = new JSONObject(cff.getConfig("ConfigReports.json"));
+    JSONObject jObject = new JSONObject(cff.getConfig(fileName));
     JSONArray jArray = jObject.getJSONArray("Reports");
 
     LOGGER.info("Wczytuję konfigurację " + jArray.length() + " raportów.");
@@ -41,6 +41,7 @@ static ConfigTable init(String fileName){
         temp.setRemoteUser(jArray.getJSONObject(i).getString("remoteUser"));
         temp.setRemotePassword(jArray.getJSONObject(i).getString("remotePassword"));
         temp.setRemoteAddress(jArray.getJSONObject(i).getString("remoteAddress"));
+        temp.setPeriod(jArray.getJSONObject(i).getString("period"));
 
 
         configTable.configList.add(temp);
