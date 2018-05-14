@@ -1,0 +1,1 @@
+java - jar -XX:-FlightRecorder EasyReports.jar
