@@ -19,15 +19,22 @@ public class DataSaver {
     String asFile(String[][] temporaryDataTable, String fileType, String fileName, String period) {
         DateTimeFormatter dtf = DateTimeFormatter.BASIC_ISO_DATE;
 
-        String fileDate = dtf.format(LocalDate.now());
+        String fileDate = "";
+
 
         switch (period) {
 
+            case "DAILY":
+                fileDate = dtf.format(LocalDate.now().minusDays(1));
+
+                break;
             case "MONTHLY":
+                fileDate = dtf.format(LocalDate.now().minusMonths(1));
                 fileDate = fileDate.substring(0, 6);
                 break;
 
             case "ANNUAL":
+                fileDate = dtf.format(LocalDate.now().minusYears(1));
                 fileDate = fileDate.substring(0, 4);
                 break;
 
