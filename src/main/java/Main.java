@@ -34,12 +34,12 @@ public class Main {
             fileName = ds.asFile(temporaryDataTable,
                     configTable.configList.get(i).getFileType(),
                     configTable.configList.get(i).getFileName(),
-                    configTable.configList.get(i).getPeriod()
+                    configTable.configList.get(i).getPeriodOfReport()
             );
 
             if (!fileName.equals("")) {
 
-                LOGGER.debug("Nazwa pliku: " + fileName + " Przekazano plik do wysyłki.");
+                LOGGER.debug("Nazwa pliku: " + fileName + " Przekazano plik do wysylki.");
 
                 DataSender dataSender = new DataSender();
 

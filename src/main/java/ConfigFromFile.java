@@ -23,7 +23,7 @@ class ConfigFromFile {
 
         } catch (IOException e) {
 
-            LOGGER.error("Błąd odczytu danych z raportami: " + fileName, e);
+            LOGGER.error("Blad odczytu danych z raportami: " + fileName, e);
 
             System.exit(1);
 

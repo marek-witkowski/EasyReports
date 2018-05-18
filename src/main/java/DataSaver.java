@@ -46,7 +46,7 @@ public class DataSaver {
 
         fileName = fileName + fileDate + "." + fileType.toLowerCase();
 
-        LOGGER.debug("Utworzono nazwę pliku:" + fileName);
+        LOGGER.debug("Utworzono nazwe pliku:" + fileName);
 
         switch (fileType) {
 
@@ -65,7 +65,7 @@ public class DataSaver {
                     return fileName;
 
                 } catch (IOException e) {
-                    LOGGER.error("Błąd w zapisie: " + fileName, e);
+                    LOGGER.error("Blad w zapisie: " + fileName, e);
                 }
                 break;
 

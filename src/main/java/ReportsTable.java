@@ -17,11 +17,11 @@ static ConfigTable init(String fileName){
     JSONObject jObject = new JSONObject(cff.getConfig(fileName));
     JSONArray jArray = jObject.getJSONArray("Reports");
 
-    LOGGER.info("Wczytuję konfigurację " + jArray.length() + " raportów.");
+    LOGGER.info("Wczytuje konfiguracje " + jArray.length() + " raportow.");
 
     for (int i = 0; i < jArray.length(); i++) {
 
-        LOGGER.debug("Wczytuję konfigurację " + (i+1) + " raportu.");
+        LOGGER.debug("Wczytuje konfiguracje " + (i + 1) + " raportu.");
 
         Config temp = new Config();
 
@@ -41,7 +41,7 @@ static ConfigTable init(String fileName){
         temp.setRemoteUser(jArray.getJSONObject(i).getString("remoteUser"));
         temp.setRemotePassword(jArray.getJSONObject(i).getString("remotePassword"));
         temp.setRemoteAddress(jArray.getJSONObject(i).getString("remoteAddress"));
-        temp.setPeriod(jArray.getJSONObject(i).getString("period"));
+        temp.setPeriodOfReport(jArray.getJSONObject(i).getString("periodOfReport"));
 
 
         configTable.configList.add(temp);

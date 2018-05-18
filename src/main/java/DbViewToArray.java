@@ -54,7 +54,13 @@ public class DbViewToArray {
 
                 for (int i = 0; i < cols; i++) {
 
-                    tableView[rowsCount][i] = rs.getString(i + 1);
+                    String temp = rs.getString(i + 1);
+
+                    if (temp == null) {
+                        temp = "";
+                    }
+
+                    tableView[rowsCount][i] = temp;
 
                 }
 
@@ -62,7 +68,7 @@ public class DbViewToArray {
 
             }
 
-            LOGGER.debug("Wczytano wszystkie wiersze widoku " + dbView + " do pamięci");
+            LOGGER.debug("Wczytano wszystkie wiersze widoku " + dbView + " do pamieci");
 
         } catch (ClassNotFoundException | SQLException e) {
 

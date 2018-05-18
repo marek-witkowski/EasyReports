@@ -19,7 +19,7 @@ class Config {
     private String remotePassword;
     private String remoteAddress;
 
-    private String period;
+    private String periodOfReport;
 
 
 
@@ -128,12 +128,12 @@ class Config {
         this.remoteAddress = remoteAddress;
     }
 
-    String getPeriod() {
-        return period;
+    String getPeriodOfReport() {
+        return periodOfReport;
     }
 
-    void setPeriod(String period) {
-        this.period = period;
+    void setPeriodOfReport(String periodOfReport) {
+        this.periodOfReport = periodOfReport;
     }
 }
 

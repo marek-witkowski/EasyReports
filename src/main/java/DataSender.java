@@ -17,7 +17,7 @@ public class DataSender {
 
     void save(String remoteServer, String remoteUser, String remotePassword, String remoteAddress, String fileName, String transmissionType, String connectionName) {
 
-        LOGGER.info("Przygotowanie do wysłania pliku.");
+        LOGGER.info("Przygotowanie do wyslania pliku.");
 
         switch (transmissionType) {
 
@@ -45,14 +45,14 @@ public class DataSender {
         Path sourceFile = new File(fileName).toPath();
         Path destinationFile = new File(remoteServer + "\\" + remoteAddress + "\\" + fileName).toPath();
 
-        LOGGER.debug("Scieżka zródłowa:" + fileName);
-        LOGGER.debug("Scieżka docelowa:" + destinationFile);
+        LOGGER.debug("Sciezka zrodlowa:" + fileName);
+        LOGGER.debug("Sciezka docelowa:" + destinationFile);
 
         try {
             Files.move(sourceFile, destinationFile);
             LOGGER.info("Plik zapisano: " + sourceFile.toString());
         } catch (IOException e) {
-            LOGGER.error("Błąd przy przegrywaniu pliku " + sourceFile.toString(), e);
+            LOGGER.error("Blad przy przegrywaniu pliku " + sourceFile.toString(), e);
         }
 
 
@@ -66,20 +66,20 @@ public class DataSender {
 
             FileInputStream is = new FileInputStream(new File(fileName));
 
-            LOGGER.debug("Lączenie z serwerem FTP: " + remoteServer);
+            LOGGER.debug("Laczenie z serwerem FTP: " + remoteServer);
             client.connect(remoteServer);
             client.login(remoteUser, remotePassword);
             client.storeFile(fileName, is);
             client.logout();
 
-            LOGGER.info("Pomyślnie przesłano plik przez FTP: " + fileName);
+            LOGGER.info("Pomyslnie przeslano plik przez FTP: " + fileName);
         } catch (Exception e) {
-            LOGGER.error("Nie udało się przesłać pliku: " + fileName + " na serwer FTP: " + remoteServer, e);
+            LOGGER.error("Nie udalo sie przeslac pliku: " + fileName + " na serwer FTP: " + remoteServer, e);
         } finally {
             try {
                 client.disconnect();
             } catch (Exception e) {
-                LOGGER.error("Nie udało się zakończyć sesji z serwerem FTP: " + remoteServer, e);
+                LOGGER.error("Nie udalo sie zakonczyc sesji z serwerem FTP: " + remoteServer, e);
             }
         }
 
@@ -113,7 +113,7 @@ public class DataSender {
 
             if (!SMTPReply.isPositiveCompletion(client.getReplyCode())) {
                 client.disconnect();
-                LOGGER.error("Serwer SMTP odrzucił połączenie");
+                LOGGER.error("Serwer SMTP odrzucił polaczenie");
                 System.exit(1);
             }
 
@@ -135,7 +135,7 @@ public class DataSender {
             client.logout();
             client.disconnect();
 
-            LOGGER.info("Plik " + fileName + " wysłano mailem.");
+            LOGGER.info("Plik " + fileName + " wyslano mailem.");
 
         } catch (IOException e) {
 
