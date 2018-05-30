@@ -1,0 +1,36 @@
+{
+  "Reports": [
+    {
+      "connectionName": "Connection FTP name",
+      "dbServer": "jdbc:oracle:thin:@address_to_oracle:1521/instance",
+      "dbUser": "user",
+      "dbPassword": "paasword",
+      "dbView": "view_with_data",
+      "transmissionType": "FTP",
+      "fileType": "CSV",
+      "fileName": "report_file_name__",
+      "fileHeadName": "file_with_head.txt",
+      "remoteServer": "ftp.intra.eu",
+      "remoteUser": "ftp_user",
+      "remotePassword": "ftp_password",
+      "remoteAddress": "",
+      "periodOfReport": "DAILY"
+    },
+    {
+      "connectionName": "Connection FTP name",
+      "dbServer": "jdbc:oracle:thin:@address_to_oracle:1521/instance",
+      "dbUser": "user",
+      "dbPassword": "paasword",
+      "dbView": "view_with_data",
+      "transmissionType": "FTP",
+      "fileType": "CSV",
+      "fileName": "report_file_name__",
+      "fileHeadName": "file_with_head.txt",
+      "remoteServer": "ftp.intra.eu",
+      "remoteUser": "ftp_user",
+      "remotePassword": "ftp_password",
+      "remoteAddress": "",
+      "periodOfReport": "DAILY"
+    }
+  ]
+}
