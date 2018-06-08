@@ -90,7 +90,7 @@ public class DataSender {
     private void sendFileViaMail(String fileName, String remoteServer, String remoteUser, String remotePassword, String remoteAddress, String connectionName) {
 
 
-        String sender = "raporty@intra.eu";
+        String sender = "Raporty";
 
 
         try {
@@ -104,7 +104,7 @@ public class DataSender {
             MultiPartEmail email = new MultiPartEmail();
             email.setHostName(remoteServer);
             email.addTo(remoteAddress);
-            email.setFrom("raporty@intra.eu");
+            email.setFrom(sender);
             email.setSubject("Raport z dnia " + LocalDate.now());
             email.setMsg("Raport z dnia " + LocalDate.now() + " wysyłany automatycznie. Nie odpowiadaj na niego.");
             email.attach(attachment);
