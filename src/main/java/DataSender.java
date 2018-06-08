@@ -90,7 +90,7 @@ public class DataSender {
     private void sendFileViaMail(String fileName, String remoteServer, String remoteUser, String remotePassword, String remoteAddress, String connectionName) {
 
 
-        String sender = "Raporty";
+        String sender = "raporty@intra.eu";
 
 
         try {
