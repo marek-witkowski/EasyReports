@@ -1,15 +1,15 @@
-import org.apache.commons.net.PrintCommandListener;
+import org.apache.commons.mail.EmailAttachment;
+import org.apache.commons.mail.MultiPartEmail;
 import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.io.Util;
-import org.apache.commons.net.smtp.SMTPClient;
-import org.apache.commons.net.smtp.SMTPReply;
-import org.apache.commons.net.smtp.SimpleSMTPHeader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDate;
 
 public class DataSender {
 
@@ -89,57 +89,34 @@ public class DataSender {
 
     private void sendFileViaMail(String fileName, String remoteServer, String remoteUser, String remotePassword, String remoteAddress, String connectionName) {
 
-        FileReader fileReader;
-        Writer writer;
-        SimpleSMTPHeader header;
-        SMTPClient client;
+
         String sender = "raporty@intra.eu";
 
 
         try {
 
-            header = new SimpleSMTPHeader(sender, remoteAddress, connectionName);
+
+            EmailAttachment attachment = new EmailAttachment();
+            attachment.setPath(fileName);
+            attachment.setDisposition(EmailAttachment.ATTACHMENT);
 
 
-            fileReader = new FileReader(fileName);
+            MultiPartEmail email = new MultiPartEmail();
+            email.setHostName(remoteServer);
+            email.addTo(remoteAddress);
+            email.setFrom("raporty@intra.eu");
+            email.setSubject("Raport z dnia " + LocalDate.now());
+            email.setMsg("Raport z dnia " + LocalDate.now() + " wysyłany automatycznie. Nie odpowiadaj na niego.");
+            email.attach(attachment);
 
+            email.send();
 
-            client = new SMTPClient();
-
-            client.addProtocolCommandListener(new PrintCommandListener(
-                    new PrintWriter(System.out), true));
-
-            client.connect(remoteServer);
-
-            if (!SMTPReply.isPositiveCompletion(client.getReplyCode())) {
-                client.disconnect();
-                LOGGER.error("Serwer SMTP odrzucił polaczenie");
-                System.exit(1);
-            }
-
-            client.login();
-
-            client.setSender(sender);
-            client.addRecipient(remoteAddress);
-
-
-            writer = client.sendMessageData();
-
-            if (writer != null) {
-                writer.write(header.toString());
-                Util.copyReader(fileReader, writer);
-                writer.close();
-                client.completePendingCommand();
-            }
-            fileReader.close();
-            client.logout();
-            client.disconnect();
 
             LOGGER.info("Plik " + fileName + " wyslano mailem.");
 
-        } catch (IOException e) {
+        } catch (Exception e) {
 
-            LOGGER.error("File not found: " + e.getMessage());
+            LOGGER.error("Blad przy wysylaniu raportu przez e-mail: " + e.getMessage());
             e.printStackTrace();
 
         }
