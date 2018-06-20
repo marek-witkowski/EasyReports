@@ -1,10 +1,16 @@
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.apache.commons.csv.QuoteMode;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -28,6 +34,12 @@ public class DataSaver {
                 fileDate = dtf.format(LocalDate.now().minusDays(1));
 
                 break;
+
+            case "WEEKLY":
+                fileDate = dtf.format(LocalDate.now().minusDays(7));
+
+                break;
+
             case "MONTHLY":
                 fileDate = dtf.format(LocalDate.now().minusMonths(1));
                 fileDate = fileDate.substring(0, 6);
@@ -69,6 +81,38 @@ public class DataSaver {
                 }
                 break;
 
+
+            case "XLS":
+
+                int i = 1;
+
+                Workbook wb = new HSSFWorkbook();
+                Sheet sheet = wb.createSheet();
+
+                for (String[] aTemporaryDataTable : temporaryDataTable) {
+
+                    Row row = sheet.createRow(i);
+
+                    for (int j = 0; j < aTemporaryDataTable.length; j++) {
+
+                        Cell cell = row.createCell(j);
+                        cell.setCellValue(aTemporaryDataTable[j]);
+
+                    }
+
+                    i++;
+                }
+
+                try (FileOutputStream out = new FileOutputStream(fileName)) {
+                    wb.write(out);
+                    LOGGER.info("Zapisano plik: " + fileName);
+                    return fileName;
+
+                } catch (IOException e) {
+                    LOGGER.error("Blad w zapisie: " + fileName, e);
+                }
+                break;
+
             case "JSON":
 
 
@@ -79,6 +123,7 @@ public class DataSaver {
 
 
                 break;
+
 
         }
 
