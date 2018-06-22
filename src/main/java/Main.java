@@ -21,6 +21,10 @@ public class Main {
 
             LOGGER.info("Przetwarzam raport: " + configTable.configList.get(i).getConnectionName());
 
+
+
+
+
             DbViewToArray dbViewToArray = new DbViewToArray(
                     configTable.configList.get(i).getDbServer(),
                     configTable.configList.get(i).getDbUser(),

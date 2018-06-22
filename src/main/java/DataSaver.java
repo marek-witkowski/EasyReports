@@ -32,12 +32,10 @@ public class DataSaver {
 
             case "DAILY":
                 fileDate = dtf.format(LocalDate.now().minusDays(1));
-
                 break;
 
             case "WEEKLY":
-                fileDate = dtf.format(LocalDate.now().minusDays(7));
-
+                fileDate = dtf.format(LocalDate.now().minusDays(7)) + "-" + dtf.format(LocalDate.now().minusDays(1));
                 break;
 
             case "MONTHLY":
@@ -123,7 +121,6 @@ public class DataSaver {
 
 
                 break;
-
 
         }
 
