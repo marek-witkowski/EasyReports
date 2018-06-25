@@ -22,8 +22,6 @@ class Config {
     private String periodOfReport;
 
 
-
-
     String getConnectionName() {
         return connectionName;
     }

@@ -111,16 +111,6 @@ public class DataSaver {
                 }
                 break;
 
-            case "JSON":
-
-
-                break;
-
-
-            case "XML":
-
-
-                break;
 
         }
 
